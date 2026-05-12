@@ -1,20 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>FIT2179 - Your Topic</title>
-  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Set Aside — Australia's National Reserve System</title>
+  <meta name="description" content="A visual essay on Australia's protected areas — how much, where, and who." />
+
+  <!-- Fonts: Fraunces (display serif) + Public Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700;9..144,900&family=Public+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Vega-Lite -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.30.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.21.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.26.0"></script>
+
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <h1>你的标题</h1>
-  <div id="chart1"></div>
 
-  <script>
-    vegaEmbed('#chart1', 'js/chart1.json');
-  </script>
+<!-- ============== HEADER ============== -->
+<header class="site-header">
+  <div class="eyebrow">A visual essay · FIT2179 Data Visualisation 2</div>
+  <h1 class="site-title">Set <em>Aside</em></h1>
+  <p class="site-subtitle">Australia has protected an area larger than Germany, France and Spain combined.<br>This is the story of <em>where</em>, <em>who</em>, and <em>whether it's enough</em>.</p>
+  <div class="byline">By J. Bian · May 2026</div>
+</header>
+
+<!-- ============== SECTION 1: THE BIG PICTURE ============== -->
+<section class="section" id="section-1">
+  <div class="section-header">
+    <span class="section-number">01</span>
+    <h2 class="section-title">The Big Picture</h2>
+    <p class="hook">It's one of the world's great conservation experiments. More than a fifth of the continent has been formally set aside for nature — but the headline number hides more than it reveals.</p>
+  </div>
+
+  <div class="prose">
+    <p>Australia is a country of extremes. It is the driest inhabited continent, the flattest, and one of the most biologically distinct. Over a century and a half, governments, communities, and Traditional Owners have placed <strong>more than 22% of the landmass</strong> under some form of protection — an area roughly the size of Western Europe.</p>
+  </div>
+
+  <figure class="chart chart-full">
+    <div id="chart-01-scale" class="chart-container">[ Chart 1: Scale comparison infographic ]</div>
+    <figcaption>Fig. 1 — Australia's protected land compared to European countries.</figcaption>
+  </figure>
+
+  <figure class="chart chart-full">
+    <div id="chart-02-map" class="chart-container">[ Chart 2: National map of all protected areas ]</div>
+    <figcaption>Fig. 2 — Every protected area in Australia, coloured by IUCN management category.</figcaption>
+  </figure>
+</section>
+
+<!-- ============== SECTION 2: THE PARADOX ============== -->
+<section class="section" id="section-2">
+  <div class="section-header">
+    <span class="section-number">02</span>
+    <h2 class="section-title">The Paradox</h2>
+    <p class="hook">22% of the country is protected. But of Australia's 89 bioregions, dozens fall below the international target. We've protected a lot — just not always the right places.</p>
+  </div>
+
+  <div class="prose">
+    <p>Quantity is not quality. A bioregion is a distinctive ecological zone: the tropical savannas of Arnhem Land, the temperate forests of Tasmania, the deserts of the Centre. International guidance recommends that <strong>at least 17%</strong> of every bioregion be safeguarded. Many of Australia's are nowhere close.</p>
+  </div>
+
+  <div class="chart-grid">
+    <figure class="chart">
+      <div id="chart-03-bioregion" class="chart-container">[ Chart 3: Bioregion completeness hex grid ]</div>
+      <figcaption>Fig. 3 — All 89 IBRA bioregions, ranked by % protected.</figcaption>
+    </figure>
+    <figure class="chart">
+      <div id="chart-04-iucn" class="chart-container">[ Chart 4: IUCN categories treemap ]</div>
+      <figcaption>Fig. 4 — The six IUCN management categories.</figcaption>
+    </figure>
+  </div>
+
+  <figure class="chart chart-full">
+    <div id="chart-05-marine" class="chart-container">[ Chart 5: Marine vs terrestrial dumbbell ]</div>
+    <figcaption>Fig. 5 — Each jurisdiction protects far more sea than land.</figcaption>
+  </figure>
+</section>
+
+<!-- ============== SECTION 3: THE QUIET REVOLUTION ============== -->
+<section class="section section-feature" id="section-3">
+  <div class="section-header">
+    <span class="section-number">03</span>
+    <h2 class="section-title">The Quiet Revolution</h2>
+    <p class="hook">In 1998, Australia did something no other country had done at scale. It handed land back. Today, Indigenous Protected Areas make up nearly half of the National Reserve System — and most Australians have never heard of them.</p>
+  </div>
+
+  <div class="prose">
+    <p>The first Indigenous Protected Area (IPA) was declared in 1998 over Nantawarrina in South Australia — 58,000 hectares of land cared for by the Adnyamathanha people. The model was simple: recognise, in law, what Traditional Owners had been doing for tens of thousands of years. Today, more than <strong>85 million hectares</strong> are managed under IPA agreements, spanning deserts, wetlands, and sea country across northern and central Australia.</p>
+  </div>
+
+  <figure class="chart chart-full">
+    <div id="chart-06-ipa-timeline" class="chart-container">[ Chart 6: IPA growth ribbon timeline ]</div>
+    <figcaption>Fig. 6 — Indigenous Protected Area declarations, 1998–2024.</figcaption>
+  </figure>
+
+  <figure class="chart chart-full">
+    <div id="chart-07-governance" class="chart-container">[ Chart 7: Governance type map ]</div>
+    <figcaption>Fig. 7 — Who manages Australia's protected land: government, Indigenous, or joint.</figcaption>
+  </figure>
+</section>
+
+<!-- ============== SECTION 4: A CENTURY OF PROTECTION ============== -->
+<section class="section" id="section-4">
+  <div class="section-header">
+    <span class="section-number">04</span>
+    <h2 class="section-title">A Century of Protection</h2>
+    <p class="hook">From a single park in 1879 to more than 14,000 today. The story of Australia's protected areas is the story of changing values.</p>
+  </div>
+
+  <div class="prose">
+    <p>Royal National Park, established south of Sydney in 1879, was the world's second national park — six years after Yellowstone. For decades, "protection" meant scenery for visitors. By the 1970s it meant biodiversity. By the 1990s, Country. The map below is the cumulative result of 145 years of shifting priorities.</p>
+  </div>
+
+  <figure class="chart chart-full">
+    <div id="chart-08-timeline" class="chart-container">[ Chart 8: Cumulative area protected 1900–2024 ]</div>
+    <figcaption>Fig. 8 — Total protected area over time, with key milestones.</figcaption>
+  </figure>
+
+  <figure class="chart chart-full">
+    <div id="chart-09-slope" class="chart-container">[ Chart 9: 2010 vs 2024 state slope chart ]</div>
+    <figcaption>Fig. 9 — Who has been accelerating, who has been standing still.</figcaption>
+  </figure>
+</section>
+
+<!-- ============== SECTION 5: VICTORIA'S PARADOX ============== -->
+<section class="section" id="section-5">
+  <div class="section-header">
+    <span class="section-number">05</span>
+    <h2 class="section-title">Victoria's Paradox</h2>
+    <p class="hook">Victoria is home to a quarter of all Australians — but accounts for just a sliver of the country's protected estate. We live next to one of the system's biggest gaps.</p>
+  </div>
+
+  <div class="prose">
+    <p>Look closely at the map of Victoria and a different story emerges. The state has been settled, farmed, and urbanised more thoroughly than any other. What remains is fragmented — pockets of alpine country in the east, Mallee scrub in the north-west, a thin coastal belt. For Victorians, the question isn't <em>how much more</em>, but <em>what we still have</em>.</p>
+  </div>
+
+  <div class="chart-grid">
+    <figure class="chart">
+      <div id="chart-10-vic-map" class="chart-container">[ Chart 10: Victoria choropleth ]</div>
+      <figcaption>Fig. 10 — Protected area share by Victorian LGA.</figcaption>
+    </figure>
+    <figure class="chart">
+      <div id="chart-11-vic-parks" class="chart-container">[ Chart 11: Top Victorian parks scatter ]</div>
+      <figcaption>Fig. 11 — Victoria's flagship parks, by age and area.</figcaption>
+    </figure>
+  </div>
+
+  <figure class="chart chart-full">
+    <div id="chart-12-species" class="chart-container">[ Chart 12: Species vs protection bivariate map ]</div>
+    <figcaption>Fig. 12 — Where threatened species live, and where protection actually is.</figcaption>
+  </figure>
+</section>
+
+<!-- ============== SECTION 6: LOOKING FORWARD ============== -->
+<section class="section section-final" id="section-6">
+  <div class="section-header">
+    <span class="section-number">06</span>
+    <h2 class="section-title">Looking Forward</h2>
+    <p class="hook">Every nation has pledged to protect 30% of its land and sea by 2030. Australia is closer than most. But the gap is not measured in hectares — it is measured in <em>which</em> hectares.</p>
+  </div>
+
+  <div class="prose">
+    <p>The 30 by 30 target, adopted at the 2022 UN Biodiversity Conference, is now the global benchmark. Australia's chances of hitting it are good — on paper. Whether the country meets it <em>in spirit</em>, by closing the gaps in bioregion coverage and species range, is a question for the next six years.</p>
+  </div>
+
+  <figure class="chart chart-full">
+    <div id="chart-13-30by30" class="chart-container">[ Chart 13: 30 by 30 progress dashboard ]</div>
+    <figcaption>Fig. 13 — Where Australia stands against the 2030 target.</figcaption>
+  </figure>
+
+  <div class="closing">
+    <p>The country has set aside a fifth of itself. The next chapter is choosing the right fifth.</p>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <h3>About this project</h3>
+    <p>Created by J. Bian for FIT2179 Data Visualisation 2, Monash University, May 2026.</p>
+
+    <h3>Data sources</h3>
+    <ul>
+      <li><strong>CAPAD 2024</strong> — Collaborative Australian Protected Areas Database, DCCEEW. <a href="https://www.dcceew.gov.au/environment/land/nrs/science/capad/2024" target="_blank" rel="noopener">Source</a></li>
+      <li><strong>IBRA bioregions</strong> — Interim Biogeographic Regionalisation for Australia, DCCEEW.</li>
+      <li><strong>Australian state boundaries</strong> — derived from ABS via <a href="https://github.com/rowanhogan/australian-states" target="_blank" rel="noopener">rowanhogan/australian-states</a> (CC BY).</li>
+    </ul>
+
+    <h3>Acknowledgements</h3>
+    <p>We acknowledge the Traditional Custodians of the lands on which this work was created, and pay respect to Elders past, present and emerging.</p>
+
+    <h3>Code</h3>
+    <p>JSON specifications and source code are available in the <a href="https://github.com/bian8-oss/2179a2" target="_blank" rel="noopener">project repository</a>.</p>
+  </div>
+</footer>
+
+<!-- ============== CHART LOADER ============== -->
+<script>
+  // Chart specifications will be loaded from /js/ as we build them.
+  // Example pattern (uncomment when ready):
+  // vegaEmbed('#chart-02-map', 'js/chart-02-map.json', {actions: false});
+</script>
+
 </body>
 </html>
