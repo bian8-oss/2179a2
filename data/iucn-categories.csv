@@ -1,0 +1,8 @@
+code,full_name,short_name,group,num_pas,area_ha,contrib_pct,x0,y0,x1,y1,cx,cy
+VI,Managed Resource Area,Managed Resource,Sustainable,1365,99937978,57.59,0,0,57.61,65.0,28.8,32.5
+II,National Park,National Park,Strict,1175,39564239,22.8,57.61,0,100.0,34.97,78.8,17.48
+Ia,Strict Nature Reserve,Strict Nature,Strict,2680,16015028,9.25,57.61,34.97,77.59,65.0,67.6,49.98
+V,Protected Landscape,Landscape,Sustainable,366,7248958,4.18,77.59,34.97,100.0,47.09,88.79,41.03
+IV,Habitat/Species Mgmt,Habitat Mgmt,Conservation,6406,4394467,2.53,77.59,47.09,86.78,65.0,82.18,56.04
+Ib,Wilderness Area,Wilderness,Strict,65,3867151,2.23,86.78,47.09,100.0,58.04,93.39,52.56
+III,Natural Monument,Natural Monument,Conservation,2500,2454996,1.41,86.78,58.04,100.0,65.0,93.39,61.52

@@ -1,0 +1,175 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Treemap of Australia's terrestrial protected area by IUCN management category. Data: CAPAD 2024, DCCEEW.",
+  "background": "transparent",
+  "padding": {"top": 20, "right": 20, "bottom": 20, "left": 20},
+  "width": 720,
+  "height": 460,
+
+  "title": {
+    "text": "How strictly is it protected?",
+    "subtitle": [
+      "Australia's terrestrial protected land, split by IUCN management category.",
+      "Sustainable-use areas (Category VI) make up more than half of the total — strict reserves only a third."
+    ],
+    "anchor": "start",
+    "frame": "group",
+    "font": "Fraunces",
+    "fontSize": 22,
+    "fontWeight": 700,
+    "color": "#1a1a1a",
+    "subtitleFont": "Public Sans",
+    "subtitleFontSize": 13,
+    "subtitleColor": "#4a4641",
+    "subtitlePadding": 6,
+    "offset": 10
+  },
+
+  "data": {
+    "url": "data/iucn-categories.csv"
+  },
+
+  "transform": [
+    {"calculate": "datum.area_ha / 1000000", "as": "area_million_ha"},
+    {"calculate": "(datum.x1 - datum.x0) > 14 && (datum.y1 - datum.y0) > 11", "as": "show_full_label"},
+    {"calculate": "(datum.x1 - datum.x0) > 4 && (datum.y1 - datum.y0) > 3", "as": "show_code_only"}
+  ],
+
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "stroke": "#f5efe6",
+        "strokeWidth": 3,
+        "cornerRadius": 2
+      },
+      "encoding": {
+        "x":  {"field": "x0", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
+        "x2": {"field": "x1"},
+        "y":  {"field": "y0", "type": "quantitative", "scale": {"domain": [0, 65], "reverse": true}, "axis": null},
+        "y2": {"field": "y1"},
+        "color": {
+          "field": "group",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Strict", "Conservation", "Sustainable"],
+            "range":  ["#3f4a2a", "#6e7d4c", "#c66b3d"]
+          },
+          "legend": {
+            "title": "Protection intensity",
+            "titleFont": "Public Sans",
+            "titleFontSize": 11,
+            "titleFontWeight": 600,
+            "titleColor": "#1a1a1a",
+            "labelFont": "Public Sans",
+            "labelFontSize": 11,
+            "labelColor": "#4a4641",
+            "orient": "bottom",
+            "direction": "horizontal",
+            "symbolType": "square",
+            "symbolSize": 140,
+            "offset": 14
+          }
+        },
+        "tooltip": [
+          {"field": "code",          "type": "nominal",     "title": "IUCN Category"},
+          {"field": "full_name",     "type": "nominal",     "title": "Type"},
+          {"field": "group",         "type": "nominal",     "title": "Group"},
+          {"field": "num_pas",       "type": "quantitative","title": "Protected areas", "format": ","},
+          {"field": "area_million_ha","type": "quantitative","title": "Area (million ha)", "format": ".2f"},
+          {"field": "contrib_pct",   "type": "quantitative","title": "% of NRS",          "format": ".1f"}
+        ]
+      }
+    },
+
+    {
+      "transform": [{"filter": "datum.show_full_label"}],
+      "mark": {
+        "type": "text",
+        "font": "Fraunces",
+        "fontWeight": 700,
+        "color": "#f5efe6",
+        "align": "left",
+        "baseline": "top",
+        "dx": 10,
+        "dy": 10
+      },
+      "encoding": {
+        "x": {"field": "x0", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
+        "y": {"field": "y0", "type": "quantitative", "scale": {"domain": [0, 65], "reverse": true}, "axis": null},
+        "text": {"field": "code"},
+        "size": {
+          "condition": {
+            "test": "(datum.x1 - datum.x0) > 30 && (datum.y1 - datum.y0) > 25",
+            "value": 36
+          },
+          "value": 18
+        }
+      }
+    },
+
+    {
+      "transform": [{"filter": "datum.show_full_label"}],
+      "mark": {
+        "type": "text",
+        "font": "Public Sans",
+        "fontWeight": 500,
+        "color": "#f5efe6",
+        "align": "left",
+        "baseline": "top",
+        "dx": 10,
+        "dy": 50,
+        "fontSize": 12
+      },
+      "encoding": {
+        "x": {"field": "x0", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
+        "y": {"field": "y0", "type": "quantitative", "scale": {"domain": [0, 65], "reverse": true}, "axis": null},
+        "text": {"field": "short_name"}
+      }
+    },
+
+    {
+      "transform": [{"filter": "datum.show_full_label"}],
+      "mark": {
+        "type": "text",
+        "font": "Fraunces",
+        "fontStyle": "italic",
+        "fontWeight": 400,
+        "color": "#f5efe6",
+        "align": "right",
+        "baseline": "bottom",
+        "dx": -10,
+        "dy": -8,
+        "fontSize": 14
+      },
+      "encoding": {
+        "x": {"field": "x1", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
+        "y": {"field": "y1", "type": "quantitative", "scale": {"domain": [0, 65], "reverse": true}, "axis": null},
+        "text": {"field": "contrib_pct", "type": "quantitative", "format": ".1f"}
+      }
+    },
+
+    {
+      "transform": [{"filter": "!datum.show_full_label && datum.show_code_only"}],
+      "mark": {
+        "type": "text",
+        "font": "Fraunces",
+        "fontWeight": 700,
+        "color": "#f5efe6",
+        "fontSize": 14,
+        "align": "center",
+        "baseline": "middle"
+      },
+      "encoding": {
+        "x": {"field": "cx", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
+        "y": {"field": "cy", "type": "quantitative", "scale": {"domain": [0, 65], "reverse": true}, "axis": null},
+        "text": {"field": "code"}
+      }
+    }
+  ],
+
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"grid": false, "domain": false, "ticks": false, "labels": false}
+  }
+}

@@ -69,8 +69,8 @@
       <figcaption>Fig. 3 — All 89 IBRA bioregions, ranked by % protected.</figcaption>
     </figure>
     <figure class="chart">
-      <div id="chart-04-iucn" class="chart-container">[ Chart 4: IUCN categories treemap ]</div>
-      <figcaption>Fig. 4 — The six IUCN management categories.</figcaption>
+      <div id="chart-04-iucn" class="chart-container"></div>
+      <figcaption>Fig. 4 — The six IUCN management categories. Data: CAPAD 2024.</figcaption>
     </figure>
   </div>
 
@@ -200,9 +200,11 @@
 
 <!-- ============== CHART LOADER ============== -->
 <script>
-  // Chart specifications will be loaded from /js/ as we build them.
-  // Example pattern (uncomment when ready):
-  // vegaEmbed('#chart-02-map', 'js/chart-02-map.json', {actions: false});
+  const vlOpts = { actions: false, renderer: 'svg' };
+
+  // Section 2 — IUCN treemap
+  vegaEmbed('#chart-04-iucn', 'js/chart-04-iucn.json', vlOpts)
+    .catch(err => console.error('chart-04-iucn:', err));
 </script>
 
 </body>
