@@ -3,8 +3,9 @@
   "description": "Treemap of Australia's terrestrial protected area by IUCN management category. Data: CAPAD 2024, DCCEEW.",
   "background": "transparent",
   "padding": {"top": 20, "right": 20, "bottom": 20, "left": 20},
-  "width": 720,
-  "height": 460,
+  "width": "container",
+  "height": 480,
+  "autosize": {"type": "fit", "contains": "padding"},
 
   "title": {
     "text": "How strictly is it protected?",
