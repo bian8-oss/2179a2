@@ -16,14 +16,14 @@
     "anchor": "start",
     "frame": "group",
     "font": "Fraunces",
-    "fontSize": 22,
+    "fontSize": 28,
     "fontWeight": 700,
     "color": "#1a1a1a",
     "subtitleFont": "Public Sans",
-    "subtitleFontSize": 13,
+    "subtitleFontSize": 15,
     "subtitleColor": "#4a4641",
-    "subtitlePadding": 6,
-    "offset": 10
+    "subtitlePadding": 8,
+    "offset": 14
   },
 
   "data": {
@@ -32,7 +32,7 @@
 
   "transform": [
     {"calculate": "datum.area_ha / 1000000", "as": "area_million_ha"},
-    {"calculate": "(datum.x1 - datum.x0) > 14 && (datum.y1 - datum.y0) > 11", "as": "show_full_label"},
+    {"calculate": "(datum.x1 - datum.x0) > 19 && (datum.y1 - datum.y0) > 13", "as": "show_full_label"},
     {"calculate": "(datum.x1 - datum.x0) > 4 && (datum.y1 - datum.y0) > 3", "as": "show_code_only"}
   ],
 
@@ -59,17 +59,17 @@
           "legend": {
             "title": "Protection intensity",
             "titleFont": "Public Sans",
-            "titleFontSize": 11,
+            "titleFontSize": 13,
             "titleFontWeight": 600,
             "titleColor": "#1a1a1a",
             "labelFont": "Public Sans",
-            "labelFontSize": 11,
+            "labelFontSize": 13,
             "labelColor": "#4a4641",
             "orient": "bottom",
             "direction": "horizontal",
             "symbolType": "square",
-            "symbolSize": 140,
-            "offset": 14
+            "symbolSize": 180,
+            "offset": 18
           }
         },
         "tooltip": [
@@ -102,9 +102,9 @@
         "size": {
           "condition": {
             "test": "(datum.x1 - datum.x0) > 30 && (datum.y1 - datum.y0) > 25",
-            "value": 36
+            "value": 44
           },
-          "value": 18
+          "value": 22
         }
       }
     },
@@ -118,9 +118,9 @@
         "color": "#f5efe6",
         "align": "left",
         "baseline": "top",
-        "dx": 10,
-        "dy": 50,
-        "fontSize": 12
+        "dx": 12,
+        "dy": 60,
+        "fontSize": 15
       },
       "encoding": {
         "x": {"field": "x0", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
@@ -139,9 +139,9 @@
         "color": "#f5efe6",
         "align": "right",
         "baseline": "bottom",
-        "dx": -10,
-        "dy": -8,
-        "fontSize": 14
+        "dx": -12,
+        "dy": -10,
+        "fontSize": 18
       },
       "encoding": {
         "x": {"field": "x1", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
@@ -157,7 +157,7 @@
         "font": "Fraunces",
         "fontWeight": 700,
         "color": "#f5efe6",
-        "fontSize": 14,
+        "fontSize": 18,
         "align": "center",
         "baseline": "middle"
       },
