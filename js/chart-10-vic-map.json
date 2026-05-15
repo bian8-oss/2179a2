@@ -1,0 +1,135 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Choropleth of % land protected by state, with Victoria highlighted. Data: CAPAD 2024.",
+  "background": "transparent",
+  "padding": {"top": 20, "right": 20, "bottom": 20, "left": 20},
+  "width": "container",
+  "height": 420,
+  "projection": {
+    "type": "mercator",
+    "center": [134, -28],
+    "scale": 620
+  },
+  "title": {
+    "text": "Victoria — the populated state, the protected gap",
+    "subtitle": [
+      "% of state land area under terrestrial protection. Victoria sits at just 3.8%.",
+      "Data: CAPAD 2024."
+    ],
+    "anchor": "start",
+    "frame": "group",
+    "font": "Fraunces",
+    "fontSize": 22,
+    "fontWeight": 700,
+    "color": "#1a1a1a",
+    "subtitleFont": "Public Sans",
+    "subtitleFontSize": 13,
+    "subtitleColor": "#4a4641",
+    "subtitlePadding": 6,
+    "offset": 8
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/aus-states.geojson",
+        "format": {"type": "json", "property": "features"}
+      },
+      "transform": [
+        {
+          "lookup": "properties.STATE_NAME",
+          "from": {
+            "data": {"url": "data/jurisdiction-stats.csv"},
+            "key": "state_full",
+            "fields": ["state", "terrestrial_pct", "marine_pct", "terrestrial_area_km2"]
+          }
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "strokeWidth": 0.8
+      },
+      "encoding": {
+        "color": {
+          "field": "terrestrial_pct",
+          "type": "quantitative",
+          "scale": {
+            "type": "linear",
+            "domain": [0, 17, 35],
+            "range": ["#8c3e1e", "#f5efe6", "#3f4a2a"],
+            "clamp": true
+          },
+          "legend": {
+            "title": "% of state land protected",
+            "titleFont": "Public Sans",
+            "titleFontSize": 13,
+            "titleFontWeight": 600,
+            "titleColor": "#1a1a1a",
+            "labelFont": "Public Sans",
+            "labelFontSize": 12,
+            "labelColor": "#4a4641",
+            "orient": "right",
+            "gradientLength": 200,
+            "gradientThickness": 12,
+            "values": [0, 5, 17, 25, 35]
+          }
+        },
+        "stroke": {
+          "condition": {
+            "test": "datum.properties.STATE_NAME == 'Victoria'",
+            "value": "#1a1a1a"
+          },
+          "value": "#8a8278"
+        },
+        "strokeWidth": {
+          "condition": {
+            "test": "datum.properties.STATE_NAME == 'Victoria'",
+            "value": 3
+          },
+          "value": 0.8
+        },
+        "tooltip": [
+          {"field": "properties.STATE_NAME", "type": "nominal", "title": "State"},
+          {"field": "terrestrial_pct", "type": "quantitative", "title": "Land protected (%)", "format": ".1f"},
+          {"field": "marine_pct", "type": "quantitative", "title": "Marine protected (%)", "format": ".1f"},
+          {"field": "terrestrial_area_km2", "type": "quantitative", "title": "Protected land (km²)", "format": ","}
+        ]
+      }
+    },
+    {
+      "data": {"values": [
+        {"name": "Victoria", "lng": 142.5, "lat": -39.6, "label": "Victoria · 3.8%"}
+      ]},
+      "mark": {
+        "type": "text",
+        "font": "Fraunces",
+        "fontStyle": "italic",
+        "fontSize": 15,
+        "fontWeight": 800,
+        "color": "#1a1a1a",
+        "align": "center",
+        "baseline": "middle"
+      },
+      "encoding": {
+        "longitude": {"field": "lng", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "text": {"field": "label"}
+      }
+    },
+    {
+      "data": {"values": [{"lng": 144.96, "lat": -37.81}]},
+      "mark": {
+        "type": "circle",
+        "size": 80,
+        "color": "#8c3e1e",
+        "opacity": 0.9
+      },
+      "encoding": {
+        "longitude": {"field": "lng", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null, "fill": null}
+  }
+}

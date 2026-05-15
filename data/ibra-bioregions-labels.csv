@@ -1,0 +1,90 @@
+rank,bioregion_code,bioregion_name,area_km2,protected_pct,gap_to_target_pp,highlight,cx,cy
+0,COS,Coral Sea,171.7,0.0,-17.0,False,28.0,28.0
+1,SAI,Subantarctic Islands,491.6,0.0,-17.0,False,76.5,28.0
+2,STU,Sturt Plateau,98575.3,0.7,-16.3,True,124.99,28.0
+3,MGD,Mitchell Grass Downs,334687.6,1.56,-15.44,False,173.49,28.0
+4,DMR,Davenport Murchison Ranges,58051.1,2.24,-14.76,False,221.99,28.0
+5,SVP,Southern Volcanic Plain,24403.4,2.29,-14.71,False,270.49,28.0
+6,BBN,Brigalow Belt North,136745.3,2.41,-14.59,False,318.98,28.0
+7,DRP,Darling Riverine Plains,106997.7,3.04,-13.96,False,367.48,28.0
+8,COP,Cobar Peneplain,73853.5,3.26,-13.74,False,415.98,28.0
+9,NSS,NSW South Western Slopes,86810.9,3.34,-13.66,False,464.48,28.0
+10,DEU,Desert Uplands,69411.0,3.37,-13.63,False,512.97,28.0
+11,AVW,Avon Wheatbelt,95171.0,4.47,-12.53,False,561.47,28.0
+12,NAN,Nandewar,27019.6,4.59,-12.41,False,52.25,70.0
+13,FIN,Finke,72674.2,4.6,-12.4,False,100.75,70.0
+14,MUL,Mulga Lands,251883.3,4.97,-12.03,False,149.24,70.0
+15,BBS,Brigalow Belt South,272199.0,5.52,-11.48,False,197.74,70.0
+16,BHC,Broken Hill Complex,56354.2,5.82,-11.18,False,246.24,70.0
+17,MII,Mount Isa Inlier,67782.6,6.45,-10.55,False,294.74,70.0
+18,RIV,Riverina,97045.0,6.47,-10.53,False,343.23,70.0
+19,BRT,Burt Plain,73797.2,6.68,-10.32,False,391.73,70.0
+20,TNM,Tasmanian Northern Midlands,4154.4,6.74,-10.26,False,440.23,70.0
+21,MUR,Murchison,281205.5,7.0,-10.0,False,488.73,70.0
+22,GUP,Gulf Plains,220418.3,7.46,-9.54,False,537.22,70.0
+23,EIU,Einasleigh Uplands,116257.3,8.06,-8.94,False,585.72,70.0
+24,PIL,Pilbara,178231.3,8.78,-8.22,False,28.0,112.0
+25,STP,Stony Plains,131663.7,8.93,-8.07,False,76.5,112.0
+26,FLB,Flinders Lofty Block,66157.7,9.11,-7.89,False,124.99,112.0
+27,SCP,South East Coastal Plain,17492.4,9.29,-7.71,False,173.49,112.0
+28,NCP,Naracoorte Coastal Plain,24582.1,9.67,-7.33,False,221.99,112.0
+29,DAB,Daly Basin,20922.3,10.47,-6.53,False,270.49,112.0
+30,NET,New England Tablelands,30022.3,10.73,-6.27,False,318.98,112.0
+31,CHC,Channel Country,304094.4,11.04,-5.96,False,367.48,112.0
+32,SWA,Swan Coastal Plain,15258.0,11.56,-5.44,False,415.98,112.0
+33,VIM,Victorian Midlands,34697.9,11.64,-5.36,False,464.48,112.0
+34,OVP,Ord Victoria Plain,125407.0,11.86,-5.14,False,512.97,112.0
+35,CAR,Carnarvon,84301.7,14.6,-2.4,False,561.47,112.0
+36,HAM,Hampton,10882.0,14.64,-2.36,False,52.25,154.0
+37,MAC,MacDonnell Ranges,39294.4,14.75,-2.25,False,100.75,154.0
+38,DAL,Dampierland,83608.7,14.8,-2.2,False,149.24,154.0
+39,SEQ,South Eastern Queensland,78049.2,14.81,-2.19,False,197.74,154.0
+40,JAF,Jarrah Forest,45090.7,14.95,-2.05,False,246.24,154.0
+41,CMC,Central Mackay Coast,14642.1,15.0,-2.0,False,294.74,154.0
+42,EYB,Eyre Yorke Block,61204.1,15.17,-1.83,False,343.23,154.0
+43,TSE,Tasmanian South East,11069.3,15.92,-1.08,False,391.73,154.0
+44,GAS,Gascoyne,180752.6,16.09,-0.91,False,440.23,154.0
+45,BEL,Ben Lomond,6575.0,16.3,-0.7,False,488.73,154.0
+46,TNS,Tasmanian Northern Slopes,6231.0,16.36,-0.64,False,537.22,154.0
+47,GAW,Gawler,120028.8,16.36,-0.64,False,585.72,154.0
+48,MDD,Murray Darling Depression,199583.7,17.4,0.4,False,28.0,196.0
+49,VIB,Victoria Bonaparte,73012.4,17.47,0.47,False,76.5,196.0
+50,SEH,South Eastern Highlands,83759.4,18.91,1.91,False,124.99,196.0
+51,GES,Geraldton Sandplains,31421.5,19.08,2.08,False,173.49,196.0
+52,KIN,King,4255.7,19.87,2.87,False,221.99,196.0
+53,TIW,Tiwi Cobourg,10105.8,20.22,3.22,False,270.49,196.0
+54,KAN,Kanmantoo,8124.1,20.55,3.55,False,318.98,196.0
+55,GFU,Gulf Fall and Uplands,118479.1,24.4,7.4,False,367.48,196.0
+56,GUC,Gulf Coastal,27117.2,26.45,9.45,False,415.98,196.0
+57,NNC,NSW North Coast,39964.7,26.54,9.54,False,464.48,196.0
+58,ESP,Esperance Plains,29213.3,29.29,12.29,False,512.97,196.0
+59,SSD,Simpson Strzelecki Dunefields,279842.8,30.88,13.88,False,561.47,196.0
+60,DAC,Darwin Coastal,28432.0,30.9,13.9,False,52.25,238.0
+61,CEK,Central Kimberley,76755.9,31.08,14.08,False,100.75,238.0
+62,ITI,Indian Tropical Islands,273.3,31.73,14.73,False,149.24,238.0
+63,MAL,Mallee,73975.6,31.86,14.86,False,197.74,238.0
+64,CEA,Central Arnhem,34624.3,34.08,17.08,False,246.24,238.0
+65,PSI,Pacific Subtropical Islands,58.2,34.1,17.1,False,294.74,238.0
+66,FUR,Furneaux,5375.4,34.41,17.41,False,343.23,238.0
+67,YAL,Yalgoo,50875.8,35.56,18.56,False,391.73,238.0
+68,SEC,South East Corner,25320.5,36.84,19.84,False,440.23,238.0
+69,COO,Coolgardie,129122.1,37.62,20.62,False,488.73,238.0
+70,CYP,Cape York Peninsula,122564.6,38.77,21.77,False,537.22,238.0
+71,PCK,Pine Creek,28517.8,42.68,25.68,False,585.72,238.0
+72,SYB,Sydney Basin,36296.0,42.68,25.68,False,28.0,280.0
+73,GVD,Great Victoria Desert,422465.6,42.97,25.97,False,76.5,280.0
+74,TAN,Tanami,259972.8,44.65,27.65,False,124.99,280.0
+75,WAR,Warren,8447.7,46.94,29.94,False,173.49,280.0
+76,LSD,Little Sandy Desert,110898.6,47.34,30.34,False,221.99,280.0
+77,GSD,Great Sandy Desert,394861.4,49.92,32.92,False,270.49,280.0
+78,WET,Wet Tropics,19891.1,53.54,36.54,False,318.98,280.0
+79,ARC,Arnhem Coast,33356.7,54.23,37.23,False,367.48,280.0
+80,TSR,Tasmanian Southern Ranges,7821.2,54.36,37.36,False,415.98,280.0
+81,NUL,Nullarbor,197227.7,54.93,37.93,False,464.48,280.0
+82,GID,Gibson Desert,156289.2,58.4,41.4,False,512.97,280.0
+83,TCH,Tasmanian Central Highlands,7678.5,60.88,43.88,False,561.47,280.0
+84,NOK,Northern Kimberley,84201.0,61.75,44.75,False,52.25,322.0
+85,AUA,Australian Alps,12329.9,64.01,47.01,True,100.75,322.0
+86,ARP,Arnhem Plateau,23060.2,74.96,57.96,False,149.24,322.0
+87,CER,Central Ranges,101640.4,81.32,64.32,False,197.74,322.0
+88,TWE,Tasmanian West,15650.8,86.29,69.29,True,246.24,322.0

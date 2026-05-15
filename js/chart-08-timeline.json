@@ -1,0 +1,208 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Cumulative protected area 1900-2024 with 5 milestones. Data: CAPAD.",
+  "background": "transparent",
+  "padding": {
+    "top": 20,
+    "right": 50,
+    "bottom": 30,
+    "left": 30
+  },
+  "width": "container",
+  "height": 340,
+  "title": {
+    "text": "Five moments that changed the map",
+    "subtitle": [
+      "145 years of protection, driven by a handful of policy decisions.",
+      "Data: CAPAD historical series."
+    ],
+    "anchor": "start",
+    "frame": "group",
+    "font": "Fraunces",
+    "fontSize": 20,
+    "fontWeight": 700,
+    "color": "#2a2820",
+    "subtitleFont": "Public Sans",
+    "subtitleFontSize": 13,
+    "subtitleColor": "#7a7568",
+    "subtitlePadding": 6,
+    "offset": 10
+  },
+  "data": {
+    "url": "data/cumulative-protection.csv"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+        "line": {
+          "color": "#3f4a2a",
+          "strokeWidth": 2
+        },
+        "color": {
+          "gradient": "linear",
+          "stops": [
+            {
+              "offset": 0,
+              "color": "#6e7d4c"
+            },
+            {
+              "offset": 1,
+              "color": "#e8e0d4"
+            }
+          ]
+        }
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative",
+          "scale": {"domain": [1879, 2025]},
+          "axis": {
+            "labelFont": "Public Sans",
+            "title": null,
+            "grid": false,
+            "domainColor": "#d8cdb7",
+            "labelColor": "#8a8278"
+          }
+        },
+        "y": {
+          "field": "area_km2",
+          "type": "quantitative",
+          "axis": {
+            "title": "Cumulative area (million km\u00b2)",
+            "titleFont": "Public Sans",
+            "titleColor": "#8a8278",
+            "grid": true,
+            "gridColor": "#ebe0cf",
+            "domainColor": "#d8cdb7",
+            "labelFont": "Public Sans",
+            "labelExpr": "datum.value / 1000000 + 'M'"
+          }
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.milestone != '' && datum.year != 2024"
+        }
+      ],
+      "mark": {
+        "type": "rule",
+        "color": "#d8cdb7",
+        "strokeWidth": 1,
+        "strokeDash": [
+          3,
+          3
+        ]
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.milestone != '' && datum.year != 2024"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "filled": true,
+        "size": 80,
+        "color": "#8c3e1e"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "area_km2",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.milestone != '' && datum.year != 2024"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 32,
+        "dy": -4,
+        "font": "Public Sans",
+        "fontSize": 10,
+        "fontWeight": 500,
+        "color": "#1a1a1a"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "area_km2",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "milestone",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -10,
+        "dy": -15,
+        "font": "Fraunces",
+        "fontSize": 16,
+        "fontWeight": 700,
+        "color": "#3f4a2a"
+      },
+      "encoding": {
+        "x": {
+          "datum": 2024,
+          "type": "quantitative"
+        },
+        "y": {
+          "datum": 18600000,
+          "type": "quantitative"
+        },
+        "text": {
+          "datum": "18.6M km\u00b2"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null,
+      "fill": null
+    },
+    "axis": {
+      "labelFont": "Public Sans",
+      "titleFont": "Public Sans",
+      "labelColor": "#7a7568",
+      "titleColor": "#7a7568",
+      "gridColor": "#d4ccc0",
+      "domainColor": "#d4ccc0",
+      "tickColor": "#d4ccc0"
+    },
+    "legend": {
+      "labelFont": "Public Sans",
+      "titleFont": "Public Sans",
+      "labelColor": "#5a5448",
+      "titleColor": "#5a5448"
+    }
+  }
+}

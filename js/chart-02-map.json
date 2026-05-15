@@ -1,0 +1,89 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "National map of protected areas colored by IUCN category. Data: CAPAD 2024.",
+  "background": "transparent",
+  "padding": {"top": 5, "right": 5, "bottom": 5, "left": 5},
+  "width": "container",
+  "height": 380,
+  "projection": {
+    "type": "mercator",
+    "center": [134, -27],
+    "scale": 560
+  },
+  "title": {
+    "text": "14,000 protected areas, from desert to coast",
+    "subtitle": ["Each dot is a protected area, coloured by IUCN management category.", "Data: CAPAD 2024."],
+    "anchor": "start",
+    "frame": "group",
+    "font": "Fraunces",
+    "fontSize": 20,
+    "fontWeight": 700,
+    "color": "#2a2820",
+    "subtitleFont": "Public Sans",
+    "subtitleFontSize": 12,
+    "subtitleColor": "#7a7568",
+    "subtitlePadding": 6,
+    "offset": 8
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/aus-states.geojson",
+        "format": {"type": "json", "property": "features"}
+      },
+"mark": {
+        "type": "geoshape",
+        "filled": true,
+        "fill": "#ddd5c8",
+        "stroke": "#d4ccc0",
+        "strokeWidth": 1
+      }
+    },
+    {
+      "data": {"url": "data/protected-areas-points.csv"},
+      "params": [
+        {
+          "name": "iucn_filter",
+          "select": {"type": "point", "fields": ["iucn_category"]},
+          "bind": "legend"
+        }
+      ],
+      "mark": {"type": "circle", "size": 14},
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "color": {
+          "field": "iucn_category",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Ia", "Ib", "II", "III", "IV", "V", "VI"],
+            "range": ["#1a472a", "#2d5a1e", "#3f4a2a", "#6e7d4c", "#8c9e6b", "#b68a6e", "#d99970"]
+          },
+          "legend": {
+            "title": "IUCN Category — click to filter",
+            "titleFont": "Public Sans",
+            "labelFont": "Public Sans",
+            "orient": "right",
+            "direction": "vertical",
+            "symbolType": "circle",
+            "symbolSize": 100
+          }
+        },
+        "opacity": {
+          "condition": {"param": "iucn_filter", "value": 0.7},
+          "value": 0.08
+        },
+        "tooltip": [
+          {"field": "iucn_category", "type": "nominal", "title": "IUCN"},
+          {"field": "area_ha", "type": "quantitative", "title": "Area (ha)", "format": ","},
+          {"field": "year_established", "type": "quantitative", "title": "Established"},
+          {"field": "state", "type": "nominal", "title": "State"}
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null, "fill": null},
+    "axis": {"labelFont": "Public Sans", "titleFont": "Public Sans"}
+  }
+}

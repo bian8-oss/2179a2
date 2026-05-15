@@ -1,0 +1,14 @@
+# Raw data binaries — keep CSV derivatives only
+data/*.xlsx
+data/*.zip
+
+# OS / editor / Claude Code session state
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.claude/
+
+# Python
+__pycache__/
+*.pyc

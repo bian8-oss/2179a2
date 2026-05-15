@@ -1,0 +1,8 @@
+category,name,group,area_ha,count,area_pct,x,x2
+Ia,Strict Nature Reserve,Strict protection,5200000,2842,2.4,0.0,2.4079648066682102
+Ib,Wilderness Area,Strict protection,15200000,89,7.0,2.4079648066682102,9.44663116462144
+II,National Park,Strict protection,68200000,685,31.6,9.44663116462144,41.02801574438527
+III,Natural Monument,Conservation,420000,156,0.2,41.02801574438527,41.22250520953924
+IV,Habitat Management,Conservation,9230000,3524,4.3,41.22250520953924,45.49664274137532
+V,Protected Landscape,Sustainable use,18900000,5234,8.8,45.49664274137532,54.24866867330401
+VI,Managed Resource,Sustainable use,98800000,2045,45.8,54.24866867330401,100.0

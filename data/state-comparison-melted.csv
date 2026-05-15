@@ -1,0 +1,17 @@
+state,state_full,year_col,pct,year
+NSW,New South Wales,pct_2010,13.7,2010
+VIC,Victoria,pct_2010,2.5,2010
+QLD,Queensland,pct_2010,6.9,2010
+WA,Western Australia,pct_2010,9.7,2010
+SA,South Australia,pct_2010,23.1,2010
+TAS,Tasmania,pct_2010,40.4,2010
+NT,Northern Territory,pct_2010,18.8,2010
+ACT,Australian Capital Territory,pct_2010,51.5,2010
+NSW,New South Wales,pct_2024,14.7,2024
+VIC,Victoria,pct_2024,3.8,2024
+QLD,Queensland,pct_2024,9.3,2024
+WA,Western Australia,pct_2024,11.8,2024
+SA,South Australia,pct_2024,27.4,2024
+TAS,Tasmania,pct_2024,50.3,2024
+NT,Northern Territory,pct_2024,21.6,2024
+ACT,Australian Capital Territory,pct_2024,60.4,2024

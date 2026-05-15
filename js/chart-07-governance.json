@@ -1,0 +1,90 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Choropleth: share of state's protected area under Indigenous governance. Data: CAPAD 2024 + DCCEEW.",
+  "background": "transparent",
+  "padding": {"top": 20, "right": 20, "bottom": 20, "left": 20},
+  "width": "container",
+  "height": 420,
+  "projection": {
+    "type": "mercator",
+    "center": [134, -28],
+    "scale": 620
+  },
+  "title": {
+    "text": "Where Indigenous management dominates",
+    "subtitle": [
+      "% of each state's terrestrial protected area governed as Indigenous Protected Areas.",
+      "Data: CAPAD 2024."
+    ],
+    "anchor": "start",
+    "frame": "group",
+    "font": "Fraunces",
+    "fontSize": 22,
+    "fontWeight": 700,
+    "color": "#1a1a1a",
+    "subtitleFont": "Public Sans",
+    "subtitleFontSize": 13,
+    "subtitleColor": "#4a4641",
+    "subtitlePadding": 6,
+    "offset": 8
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/aus-states.geojson",
+        "format": {"type": "json", "property": "features"}
+      },
+      "transform": [
+        {
+          "lookup": "properties.STATE_NAME",
+          "from": {
+            "data": {"url": "data/governance-by-state.csv"},
+            "key": "state_full",
+            "fields": ["state", "Indigenous", "Government", "Joint", "Private"]
+          }
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#1a1a1a",
+        "strokeWidth": 0.8
+      },
+      "encoding": {
+        "color": {
+          "field": "Indigenous",
+          "type": "quantitative",
+          "scale": {
+            "type": "linear",
+            "domain": [0, 10, 45],
+            "range": ["#f5efe6", "#d99970", "#8c3e1e"],
+            "clamp": true
+          },
+          "legend": {
+            "title": "% Indigenous-governed",
+            "titleFont": "Public Sans",
+            "titleFontSize": 13,
+            "titleFontWeight": 600,
+            "titleColor": "#1a1a1a",
+            "labelFont": "Public Sans",
+            "labelFontSize": 12,
+            "labelColor": "#4a4641",
+            "orient": "right",
+            "gradientLength": 200,
+            "gradientThickness": 12,
+            "values": [0, 10, 20, 30, 42]
+          }
+        },
+        "tooltip": [
+          {"field": "properties.STATE_NAME", "type": "nominal", "title": "State"},
+          {"field": "Indigenous", "type": "quantitative", "title": "Indigenous (%)", "format": ".1f"},
+          {"field": "Government", "type": "quantitative", "title": "Government (%)", "format": ".1f"},
+          {"field": "Joint", "type": "quantitative", "title": "Joint (%)", "format": ".1f"},
+          {"field": "Private", "type": "quantitative", "title": "Private (%)", "format": ".1f"}
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null, "fill": null}
+  }
+}

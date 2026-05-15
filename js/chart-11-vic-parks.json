@@ -1,0 +1,218 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Victoria top parks by age and area, with a year-range brush (Focus + Context). Data: CAPAD 2024.",
+  "background": "transparent",
+  "autosize": {"type": "fit-x", "contains": "padding", "resize": true},
+  "padding": {"top": 20, "right": 40, "bottom": 20, "left": 20},
+  "title": {
+    "text": "Old and small, or young and large",
+    "subtitle": [
+      "Victoria's flagship parks vary enormously in age and size.",
+      "Drag on the strip below to focus on a specific year range. Data: CAPAD 2024."
+    ],
+    "anchor": "start",
+    "frame": "group",
+    "font": "Fraunces",
+    "fontSize": 24,
+    "fontWeight": 700,
+    "color": "#2a2820",
+    "subtitleFont": "Public Sans",
+    "subtitleFontSize": 13,
+    "subtitleColor": "#7a7568",
+    "subtitlePadding": 6,
+    "offset": 10
+  },
+  "data": {"url": "data/victoria-parks.csv"},
+  "spacing": 4,
+  "vconcat": [
+    {
+      "width": "container",
+      "height": 280,
+      "layer": [
+        {
+          "transform": [{"filter": {"param": "year_brush"}}],
+          "mark": {
+            "type": "point",
+            "filled": true,
+            "opacity": 0.85,
+            "stroke": "#f5efe6",
+            "strokeWidth": 1,
+            "tooltip": true
+          },
+          "encoding": {
+            "x": {
+              "field": "established",
+              "type": "quantitative",
+              "scale": {"domain": [1885, 2015]},
+              "axis": {
+                "title": "Year established",
+                "titleFont": "Public Sans",
+                "titleColor": "#8a8278",
+                "grid": true,
+                "gridColor": "#ebe0cf",
+                "domain": false,
+                "ticks": false,
+                "labelFont": "Public Sans"
+              }
+            },
+            "y": {
+              "field": "area_km2",
+              "type": "quantitative",
+              "scale": {"type": "log", "domain": [100, 10000]},
+              "axis": {
+                "title": "Area (km², log scale)",
+                "titleFont": "Public Sans",
+                "titleColor": "#8a8278",
+                "grid": true,
+                "gridColor": "#ebe0cf",
+                "domain": false,
+                "ticks": false,
+                "labelFont": "Public Sans"
+              }
+            },
+            "size": {
+              "field": "visitors",
+              "type": "quantitative",
+              "scale": {"range": [60, 400]},
+              "legend": {
+                "title": "Annual visitors",
+                "titleFont": "Public Sans",
+                "labelFont": "Public Sans",
+                "orient": "bottom",
+                "direction": "horizontal",
+                "titleAnchor": "start",
+                "columns": 5,
+                "labelFontSize": 10,
+                "format": ".0s"
+              }
+            },
+            "color": {"value": "#3f4a2a"},
+            "tooltip": [
+              {"field": "park", "type": "nominal", "title": "Park"},
+              {"field": "established", "type": "quantitative", "title": "Established"},
+              {"field": "area_km2", "type": "quantitative", "title": "Area (km²)", "format": ","},
+              {"field": "visitors", "type": "quantitative", "title": "Visitors", "format": ","}
+            ]
+          }
+        },
+        {
+          "transform": [
+            {"filter": {"param": "year_brush"}},
+            {"filter": "indexof(['Alpine NP','Wilsons Promontory NP','Great Otway NP','Grampians NP','Kinglake NP'], datum.park) >= 0"}
+          ],
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 12,
+            "dy": -10,
+            "font": "Fraunces",
+            "fontStyle": "italic",
+            "fontSize": 11,
+            "fontWeight": 500,
+            "color": "#1a1a1a"
+          },
+          "encoding": {
+            "x": {"field": "established", "type": "quantitative"},
+            "y": {"field": "area_km2", "type": "quantitative"},
+            "text": {"field": "park", "type": "nominal"}
+          }
+        },
+        {
+          "transform": [
+            {"filter": {"param": "year_brush", "empty": false}},
+            {"filter": "indexof(['Alpine NP','Wilsons Promontory NP','Great Otway NP','Grampians NP','Kinglake NP'], datum.park) < 0"}
+          ],
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 12,
+            "dy": -10,
+            "font": "Fraunces",
+            "fontStyle": "italic",
+            "fontSize": 10,
+            "fontWeight": 400,
+            "color": "#4a4641"
+          },
+          "encoding": {
+            "x": {"field": "established", "type": "quantitative"},
+            "y": {"field": "area_km2", "type": "quantitative"},
+            "text": {"field": "park", "type": "nominal"}
+          }
+        }
+      ]
+    },
+    {
+      "width": "container",
+      "height": 70,
+      "view": {"stroke": "#d4ccc0", "strokeWidth": 1, "fill": "#ebe0cf", "fillOpacity": 0.4},
+      "transform": [{"calculate": "1", "as": "_const_y"}],
+      "mark": {
+        "type": "circle",
+        "size": 90,
+        "color": "#3f4a2a",
+        "opacity": 0.7
+      },
+      "params": [
+        {
+          "name": "year_brush",
+          "select": {
+            "type": "interval",
+            "encodings": ["x"],
+            "mark": {
+              "fill": "#c66b3d",
+              "fillOpacity": 0.22,
+              "stroke": "#8c3e1e",
+              "strokeWidth": 1.5
+            }
+          }
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "established",
+          "type": "quantitative",
+          "scale": {"domain": [1880, 2010]},
+          "axis": {
+            "title": "Drag here to filter parks shown above ↑",
+            "titleFont": "Public Sans",
+            "titleFontSize": 11,
+            "titleFontWeight": 500,
+            "titleColor": "#4a4641",
+            "titleAnchor": "start",
+            "labelFont": "Public Sans",
+            "labelFontSize": 10,
+            "labelColor": "#8a8278",
+            "tickCount": 7,
+            "grid": false,
+            "domain": false,
+            "ticks": false
+          }
+        },
+        "y": {
+          "field": "_const_y",
+          "type": "quantitative",
+          "scale": {"domain": [0, 2]},
+          "axis": null
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null, "fill": null},
+    "axis": {
+      "labelFont": "Public Sans",
+      "titleFont": "Public Sans",
+      "labelColor": "#7a7568",
+      "titleColor": "#7a7568",
+      "gridColor": "#d4ccc0",
+      "domainColor": "#d4ccc0",
+      "tickColor": "#d4ccc0"
+    },
+    "legend": {
+      "labelFont": "Public Sans",
+      "titleFont": "Public Sans",
+      "labelColor": "#5a5448",
+      "titleColor": "#5a5448"
+    }
+  }
+}

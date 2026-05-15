@@ -1,0 +1,4 @@
+category,current_pct,target_pct,label,status
+Land Protection,22,30,On track,in_progress
+Ocean Protection,44,30,Already exceeded!,exceeded
+Australia Overall,31,30,Combined progress,overall

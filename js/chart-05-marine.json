@@ -1,0 +1,144 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Marine vs terrestrial protection by jurisdiction. Data: CAPAD 2024.",
+  "background": "transparent",
+  "padding": {
+    "top": 20,
+    "right": 30,
+    "bottom": 30,
+    "left": 20
+  },
+  "width": "container",
+  "height": 400,
+  "title": {
+    "text": "Every jurisdiction protects more sea than land",
+    "subtitle": [
+      "VIC has just 3.8% of land protected \u2014 the lowest of any state.",
+      "Data: CAPAD 2024 Terrestrial + Marine."
+    ],
+    "anchor": "start",
+    "frame": "group",
+    "font": "Fraunces",
+    "fontSize": 24,
+    "fontWeight": 700,
+    "color": "#2a2820",
+    "subtitleFont": "Public Sans",
+    "subtitleFontSize": 13,
+    "subtitleColor": "#7a7568",
+    "subtitlePadding": 6,
+    "offset": 10
+  },
+  "data": {
+    "url": "data/jurisdiction-stats.csv"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#d8cdb7",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "y": {
+          "field": "state_full",
+          "type": "nominal",
+          "sort": "-x",
+          "axis": {
+            "labelFont": "Public Sans",
+            "labelFontSize": 12,
+            "labelColor": "#1a1a1a",
+            "title": null,
+            "domain": false,
+            "ticks": false
+          }
+        },
+        "x": {
+          "field": "terrestrial_pct",
+          "type": "quantitative"
+        },
+        "x2": {
+          "field": "marine_pct"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 120
+      },
+      "encoding": {
+        "y": {
+          "field": "state_full",
+          "type": "nominal",
+          "sort": "-x"
+        },
+        "x": {
+          "field": "terrestrial_pct",
+          "type": "quantitative",
+          "axis": {
+            "title": "% Protected",
+            "titleFont": "Public Sans",
+            "titleColor": "#8a8278",
+            "grid": true,
+            "gridColor": "#ebe0cf",
+            "domain": false,
+            "ticks": false,
+            "labelFont": "Public Sans"
+          }
+        },
+        "color": {
+          "value": "#3f4a2a",
+          "legend": {
+            "title": "Terrestrial"
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 120
+      },
+      "encoding": {
+        "y": {
+          "field": "state_full",
+          "type": "nominal",
+          "sort": "-x"
+        },
+        "x": {
+          "field": "marine_pct",
+          "type": "quantitative"
+        },
+        "color": {
+          "value": "#6b8b9e",
+          "legend": {
+            "title": "Marine"
+          }
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null,
+      "fill": null
+    },
+    "axis": {
+      "labelFont": "Public Sans",
+      "titleFont": "Public Sans",
+      "labelColor": "#7a7568",
+      "titleColor": "#7a7568",
+      "gridColor": "#d4ccc0",
+      "domainColor": "#d4ccc0",
+      "tickColor": "#d4ccc0"
+    },
+    "legend": {
+      "labelFont": "Public Sans",
+      "titleFont": "Public Sans",
+      "labelColor": "#5a5448",
+      "titleColor": "#5a5448"
+    }
+  }
+}

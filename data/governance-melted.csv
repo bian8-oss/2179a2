@@ -1,0 +1,41 @@
+state,state_full,type,pct
+NSW,New South Wales,Indigenous,2.1
+VIC,Victoria,Indigenous,0.0
+QLD,Queensland,Indigenous,4.8
+WA,Western Australia,Indigenous,8.2
+SA,South Australia,Indigenous,6.1
+TAS,Tasmania,Indigenous,0.8
+NT,Northern Territory,Indigenous,42.5
+ACT,Australian Capital Territory,Indigenous,0.0
+NSW,New South Wales,Joint,8.3
+VIC,Victoria,Joint,1.2
+QLD,Queensland,Joint,12.1
+WA,Western Australia,Joint,15.4
+SA,South Australia,Joint,4.8
+TAS,Tasmania,Joint,2.1
+NT,Northern Territory,Joint,18.2
+ACT,Australian Capital Territory,Joint,0.0
+NSW,New South Wales,Government,78.5
+VIC,Victoria,Government,92.4
+QLD,Queensland,Government,68.3
+WA,Western Australia,Government,58.7
+SA,South Australia,Government,72.3
+TAS,Tasmania,Government,88.4
+NT,Northern Territory,Government,28.4
+ACT,Australian Capital Territory,Government,99.2
+NSW,New South Wales,Private,10.8
+VIC,Victoria,Private,5.9
+QLD,Queensland,Private,14.2
+WA,Western Australia,Private,16.9
+SA,South Australia,Private,16.2
+TAS,Tasmania,Private,8.3
+NT,Northern Territory,Private,10.4
+ACT,Australian Capital Territory,Private,0.6
+NSW,New South Wales,Other,0.3
+VIC,Victoria,Other,0.5
+QLD,Queensland,Other,0.6
+WA,Western Australia,Other,0.8
+SA,South Australia,Other,0.6
+TAS,Tasmania,Other,0.4
+NT,Northern Territory,Other,0.5
+ACT,Australian Capital Territory,Other,0.2

@@ -1,0 +1,186 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "IPA growth timeline 1998-2024. Data: DCCEEW.",
+  "background": "transparent",
+  "padding": {
+    "top": 20,
+    "right": 30,
+    "bottom": 30,
+    "left": 20
+  },
+  "width": "container",
+  "height": 320,
+  "title": {
+    "text": "From one agreement to 85 million hectares",
+    "subtitle": [
+      "Indigenous Protected Areas now cover nearly half the National Reserve System.",
+      "Data: DCCEEW Indigenous Protected Areas."
+    ],
+    "anchor": "start",
+    "frame": "group",
+    "font": "Fraunces",
+    "fontSize": 24,
+    "fontWeight": 700,
+    "color": "#2a2820",
+    "subtitleFont": "Public Sans",
+    "subtitleFontSize": 13,
+    "subtitleColor": "#7a7568",
+    "subtitlePadding": 6,
+    "offset": 10
+  },
+  "data": {
+    "url": "data/ipa-timeline.csv"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+        "line": {
+          "color": "#3f4a2a",
+          "strokeWidth": 2
+        },
+        "color": {
+          "gradient": "linear",
+          "stops": [
+            {
+              "offset": 0,
+              "color": "#6e7d4c"
+            },
+            {
+              "offset": 1,
+              "color": "#e8e0d4"
+            }
+          ]
+        }
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative",
+          "scale": {"domain": [1997, 2025]},
+          "axis": {
+            "labelFont": "Public Sans",
+            "title": null,
+            "grid": false,
+            "domainColor": "#d8cdb7",
+            "labelColor": "#8a8278"
+          }
+        },
+        "y": {
+          "field": "cumulative_km2",
+          "type": "quantitative",
+          "axis": {
+            "title": "Cumulative area (thousand km\u00b2)",
+            "titleFont": "Public Sans",
+            "titleColor": "#8a8278",
+            "grid": true,
+            "gridColor": "#ebe0cf",
+            "domainColor": "#d8cdb7",
+            "ticks": false,
+            "labelFont": "Public Sans",
+            "labelExpr": "datum.value / 1000 + 'M'"
+          }
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.event != ''"
+        }
+      ],
+      "mark": {
+        "type": "rule",
+        "color": "#d8cdb7",
+        "strokeWidth": 1,
+        "strokeDash": [
+          4,
+          4
+        ]
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.event != ''"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 32,
+        "dy": -4,
+        "font": "Public Sans",
+        "fontSize": 10,
+        "fontWeight": 500,
+        "color": "#1a1a1a"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "cumulative_km2",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "event",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -10,
+        "dy": -15,
+        "font": "Fraunces",
+        "fontSize": 18,
+        "fontWeight": 700,
+        "color": "#3f4a2a"
+      },
+      "encoding": {
+        "x": {
+          "datum": 2024,
+          "type": "quantitative"
+        },
+        "y": {
+          "datum": 85200,
+          "type": "quantitative"
+        },
+        "text": {
+          "datum": "85M ha"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null,
+      "fill": null
+    },
+    "axis": {
+      "labelFont": "Public Sans",
+      "titleFont": "Public Sans",
+      "labelColor": "#7a7568",
+      "titleColor": "#7a7568",
+      "gridColor": "#d4ccc0",
+      "domainColor": "#d4ccc0",
+      "tickColor": "#d4ccc0"
+    },
+    "legend": {
+      "labelFont": "Public Sans",
+      "titleFont": "Public Sans",
+      "labelColor": "#5a5448",
+      "titleColor": "#5a5448"
+    }
+  }
+}

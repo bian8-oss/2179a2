@@ -1,0 +1,115 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Scale comparison: AU protected vs EU countries. Data: CAPAD 2024 + World Bank.",
+  "background": "transparent",
+  "padding": {
+    "top": 20,
+    "right": 20,
+    "bottom": 20,
+    "left": 20
+  },
+  "width": "container",
+  "height": 360,
+  "title": {
+    "text": "Australia's protected estate is 13\u00d7 Western Europe",
+    "subtitle": [
+      "The combined area of Germany, France and Spain still falls far short.",
+      "Data: CAPAD 2024, World Bank."
+    ],
+    "anchor": "start",
+    "frame": "group",
+    "font": "Fraunces",
+    "fontSize": 24,
+    "fontWeight": 700,
+    "color": "#1a1a1a",
+    "subtitleFont": "Public Sans",
+    "subtitleFontSize": 13,
+    "subtitleColor": "#4a4641",
+    "subtitlePadding": 6,
+    "offset": 10
+  },
+  "data": {
+    "url": "data/scale-comparison.csv"
+  },
+  "mark": {
+    "type": "bar",
+    "height": 28,
+    "cornerRadiusEnd": 4,
+    "tooltip": true
+  },
+  "encoding": {
+    "y": {
+      "field": "entity",
+      "type": "nominal",
+      "sort": [
+        "Germany",
+        "France",
+        "Spain",
+        "Germany+France+Spain",
+        "Australia (protected)"
+      ],
+      "axis": {
+        "labelFont": "Public Sans",
+        "labelFontSize": 12,
+        "labelColor": "#1a1a1a",
+        "title": null,
+        "domain": false,
+        "ticks": false
+      }
+    },
+    "x": {
+      "field": "area_sqkm",
+      "type": "quantitative",
+      "axis": {
+        "title": "Area (million km\u00b2)",
+        "titleFont": "Public Sans",
+        "titleColor": "#8a8278",
+        "grid": true,
+        "gridColor": "#ebe0cf",
+        "domain": false,
+        "ticks": false,
+        "labelFont": "Public Sans",
+        "labelExpr": "datum.value / 1000000 + 'M'"
+      }
+    },
+    "color": {
+      "field": "group",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "EU",
+          "EU Combined",
+          "AU"
+        ],
+        "range": [
+          "#9ab5c4",
+          "#d99970",
+          "#3f4a2a"
+        ]
+      },
+      "legend": null
+    },
+    "tooltip": [
+      {
+        "field": "entity",
+        "type": "nominal",
+        "title": "Area"
+      },
+      {
+        "field": "area_sqkm",
+        "type": "quantitative",
+        "title": "km\u00b2",
+        "format": ","
+      }
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFont": "Public Sans",
+      "titleFont": "Public Sans"
+    }
+  }
+}

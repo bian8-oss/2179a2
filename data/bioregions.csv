@@ -1,0 +1,90 @@
+bioregion,area_sqkm,protected_pct,meets_target,status,grid_col,grid_row
+Arnhem Plateau,40280.0,53.5,Yes,Meets target,0,0
+Burt Plain,159206.0,51.0,Yes,Meets target,1,0
+Avon Wheatbelt,215407.0,47.0,Yes,Meets target,2,0
+Central Arnhem,12499.0,46.2,Yes,Meets target,3,0
+South Eastern Queensland,75103.0,44.6,Yes,Meets target,4,0
+Brigalow Belt North,229432.0,43.0,Yes,Meets target,5,0
+Cape York Peninsula,131125.0,43.0,Yes,Meets target,6,0
+Northern Kimberley,89028.0,42.9,Yes,Meets target,7,0
+Pilbara,75671.0,40.4,Yes,Meets target,8,0
+South East Corner,203280.0,39.7,Yes,Meets target,9,0
+Central Mackay Coast,14272.0,39.2,Yes,Meets target,0,1
+Arnhem Coast,144303.0,36.2,Yes,Meets target,1,1
+Central Ranges,192741.0,35.8,Yes,Meets target,2,1
+Simpson Strzelecki Dunefields,295767.0,32.7,Yes,Meets target,3,1
+Bathurst,119087.0,31.6,Yes,Meets target,4,1
+Tasmanian West,179313.0,30.9,Yes,Meets target,5,1
+Darwin Coastal,27709.0,30.3,Yes,Meets target,6,1
+Ben Lomond,232435.0,29.7,Yes,Meets target,7,1
+Brigalow Belt South,170577.0,29.7,Yes,Meets target,8,1
+Sydney Basin,191891.0,29.5,Yes,Meets target,9,1
+Pacific Subtropical Islands,87201.0,28.5,Yes,Meets target,0,2
+Southern Volcanic Plain,219824.0,28.2,Yes,Meets target,1,2
+Tasmanian Northern Midlands,251414.0,28.1,Yes,Meets target,2,2
+Carnarvon,126063.0,28.1,Yes,Meets target,3,2
+Riverina,47744.0,27.6,Yes,Meets target,4,2
+Yalgoo,56438.0,26.9,Yes,Meets target,5,2
+ Tasmanian Central Highlands,31635.0,26.9,Yes,Meets target,6,2
+Ord Victoria Plain,20186.0,26.8,Yes,Meets target,7,2
+Broken Hill Complex,150670.0,26.7,Yes,Meets target,8,2
+Einasleigh Uplands,243396.0,26.4,Yes,Meets target,9,2
+Tanami,163054.0,26.2,Yes,Meets target,0,3
+Crescents,227888.0,25.8,Yes,Meets target,1,3
+Subtropical Highlands,149389.0,25.6,Yes,Meets target,2,3
+Pine Creek,272938.0,25.3,Yes,Meets target,3,3
+Desert Uplands,279261.0,24.2,Yes,Meets target,4,3
+Bass Strait,208827.0,24.1,Yes,Meets target,5,3
+Tiwi Cobourg,204881.0,23.7,Yes,Meets target,6,3
+NSW South Western Slopes,184821.0,23.3,Yes,Meets target,7,3
+Coral Sea,78541.0,22.6,Yes,Meets target,8,3
+Daly Basin,72495.0,22.3,Yes,Meets target,9,3
+Davenport Murchison Ranges,52560.0,22.3,Yes,Meets target,0,4
+South East Coastal Plain,76406.0,21.8,Yes,Meets target,1,4
+NSW North Coast,15882.0,20.4,Yes,Meets target,2,4
+Channel Country,97735.0,20.3,Yes,Meets target,3,4
+South Eastern Highlands,229678.0,20.0,Yes,Meets target,4,4
+Coolgardie,272732.0,19.6,Yes,Meets target,5,4
+Great Sandy Desert,37465.0,19.5,Yes,Meets target,6,4
+Cobar Peneplain,155028.0,19.5,Yes,Meets target,7,4
+Nullarbor,153290.0,19.2,Yes,Meets target,8,4
+Gilberton,98811.0,19.2,Yes,Meets target,9,4
+Dampierland,90477.0,18.5,Yes,Meets target,0,5
+Murray Darling Depression,291676.0,17.5,Yes,Meets target,1,5
+Gulf Fall and Uplands,72241.0,17.1,Yes,Meets target,2,5
+Naracoorte Coastal Plain,79276.0,17.1,Yes,Meets target,3,5
+Esperance Plains,191854.0,16.8,No,Below target,4,5
+Little Sandy Desert,40360.0,16.6,No,Below target,5,5
+New England Tablelands,151688.0,16.4,No,Below target,6,5
+Tasmanian South East,60023.0,15.8,No,Below target,7,5
+Central Kimberley,36828.0,15.5,No,Below target,8,5
+Hampton,258916.0,15.3,No,Below target,9,5
+Victoria Bonaparte,9893.0,14.9,No,Below target,0,6
+Wet Tropics,195326.0,14.8,No,Below target,1,6
+Nandewar,288922.0,14.6,No,Below target,2,6
+Warren,71816.0,14.3,No,Below target,3,6
+Gascoyne,164106.0,14.1,No,Below target,4,6
+Flinders Lofty Block,60038.0,13.9,No,Below target,5,6
+MacDonnell Ranges,283158.0,12.9,No,Below target,6,6
+Finke,242083.0,12.7,No,Below target,7,6
+North Kimberley,93759.0,12.0,No,Below target,8,6
+IBRA_NAME_40,7051.0,11.6,No,Below target,9,6
+Mulga Lands,212391.0,11.2,No,Below target,0,7
+Stony Plains,113496.0,11.0,No,Below target,1,7
+Mount Isa Inlier,158043.0,10.8,No,Below target,2,7
+Kanmantoo,128136.0,10.4,No,Below target,3,7
+Gulf Plains,130997.0,9.6,No,Below target,4,7
+Tasmanian Southern Ranges,17029.0,8.5,No,Below target,5,7
+Eyre Yorke Block,262081.0,8.0,No,Below target,6,7
+Mallee,100345.0,7.7,No,Below target,7,7
+Gawler,243195.0,7.6,No,Below target,8,7
+Tasmanian Northern Slopes,99630.0,7.2,No,Below target,9,7
+Lachlan,104596.0,6.9,No,Below target,0,8
+Victorian Midlands,156067.0,6.9,No,Below target,1,8
+Hamersley,246314.0,6.5,No,Below target,2,8
+Geraldton Sandplains,269347.0,6.0,No,Below target,3,8
+Murchison,112271.0,5.8,No,Below target,4,8
+Furneaux,268305.0,5.7,No,Below target,5,8
+Sturt Plateau,191530.0,5.2,No,Below target,6,8
+Jarrah Forest,155670.0,4.8,No,Below target,7,8
+King,70522.0,3.5,No,Below target,8,8

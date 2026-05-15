@@ -1,0 +1,188 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "2010 vs 2024 state comparison slope chart. Data: CAPAD.",
+  "background": "transparent",
+  "padding": {
+    "top": 20,
+    "right": 40,
+    "bottom": 30,
+    "left": 20
+  },
+  "width": "container",
+  "height": 320,
+  "title": {
+    "text": "Victoria grew 52% \u2014 but from a tiny base",
+    "subtitle": [
+      "All states expanded, but starting points differ by an order of magnitude.",
+      "Data: CAPAD 2010 vs CAPAD 2024."
+    ],
+    "anchor": "start",
+    "frame": "group",
+    "font": "Fraunces",
+    "fontSize": 24,
+    "fontWeight": 700,
+    "color": "#2a2820",
+    "subtitleFont": "Public Sans",
+    "subtitleFontSize": 13,
+    "subtitleColor": "#7a7568",
+    "subtitlePadding": 6,
+    "offset": 10
+  },
+  "data": {
+    "url": "data/state-comparison-melted.csv"
+  },
+  "layer": [
+    {
+      "params": [
+        {
+          "name": "state_hover",
+          "select": {"type": "point", "fields": ["state"], "on": "mouseover", "clear": "mouseout"}
+        }
+      ],
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative",
+          "scale": {"domain": [2008, 2026]},
+          "axis": {
+            "title": null,
+            "labelFont": "Public Sans",
+            "grid": false,
+            "domainColor": "#d8cdb7",
+            "ticks": false,
+            "values": [2010, 2024],
+            "labelColor": "#8a8278"
+          }
+        },
+        "y": {
+          "field": "pct",
+          "type": "quantitative",
+          "scale": {"domain": [0, 70]},
+          "axis": {
+            "title": "% Protected",
+            "titleFont": "Public Sans",
+            "titleColor": "#8a8278",
+            "grid": true,
+            "gridColor": "#ebe0cf",
+            "domain": false,
+            "ticks": false,
+            "labelFont": "Public Sans"
+          }
+        },
+        "detail": {"field": "state", "type": "nominal"},
+        "color": {
+          "condition": {"param": "state_hover", "empty": false, "value": "#3f4a2a"},
+          "value": "#d8cdb7"
+        },
+        "strokeWidth": {
+          "condition": {"param": "state_hover", "empty": false, "value": 4},
+          "value": 1.8
+        },
+        "tooltip": [
+          {"field": "state_full", "type": "nominal", "title": "State"},
+          {"field": "year", "type": "quantitative", "title": "Year"},
+          {"field": "pct", "type": "quantitative", "title": "% protected", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 100
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "pct",
+          "type": "quantitative"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.year == 2024 && datum.pct > 50",
+            "value": "#3f4a2a"
+          },
+          "value": "#6b8b9e"
+        }
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.year == 2024"},
+        {"calculate": "datum.state_full + '  ' + format(datum.pct, '.1f') + '%'", "as": "right_label"}
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "font": "Public Sans",
+        "fontSize": 11,
+        "fontWeight": 500,
+        "color": "#4a4641"
+      },
+      "encoding": {
+        "x": {"datum": 2024, "type": "quantitative"},
+        "y": {"field": "pct", "type": "quantitative"},
+        "text": {"field": "right_label", "type": "nominal"}
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.year == 2010"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -10,
+        "font": "Public Sans",
+        "fontSize": 11,
+        "color": "#8a8278"
+      },
+      "encoding": {
+        "x": {
+          "datum": 2010,
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "pct",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "pct",
+          "type": "quantitative",
+          "format": ".1f"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null,
+      "fill": null
+    },
+    "axis": {
+      "labelFont": "Public Sans",
+      "titleFont": "Public Sans",
+      "labelColor": "#7a7568",
+      "titleColor": "#7a7568",
+      "gridColor": "#d4ccc0",
+      "domainColor": "#d4ccc0",
+      "tickColor": "#d4ccc0"
+    },
+    "legend": {
+      "labelFont": "Public Sans",
+      "titleFont": "Public Sans",
+      "labelColor": "#5a5448",
+      "titleColor": "#5a5448"
+    }
+  }
+}

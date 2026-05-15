@@ -1,0 +1,195 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "30 by 30 progress dashboard. Data: CAPAD 2024.",
+  "background": "transparent",
+  "padding": {
+    "top": 20,
+    "right": 20,
+    "bottom": 30,
+    "left": 20
+  },
+  "width": "container",
+  "height": 320,
+  "title": {
+    "text": "30 by 30: close on paper, gaps on the ground",
+    "subtitle": [
+      "Australia is near the 30% target overall \u2014 but land protection varies enormously by state.",
+      "Data: CAPAD 2024."
+    ],
+    "anchor": "start",
+    "frame": "group",
+    "font": "Fraunces",
+    "fontSize": 24,
+    "fontWeight": 700,
+    "color": "#2a2820",
+    "subtitleFont": "Public Sans",
+    "subtitleFontSize": 13,
+    "subtitleColor": "#7a7568",
+    "subtitlePadding": 6,
+    "offset": 10
+  },
+  "data": {
+    "url": "data/30by30-gauge.csv"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "arc",
+        "innerRadius": 50,
+        "outerRadius": 80,
+        "cornerRadius": 4,
+        "theta": 3.14159,
+        "theta2": 0,
+        "opacity": 0.15,
+        "color": "#d8cdb7"
+      },
+      "encoding": {
+        "column": {
+          "field": "category",
+          "type": "nominal",
+          "title": null,
+          "header": {
+            "labelFont": "Public Sans",
+            "labelFontSize": 13,
+            "labelColor": "#1a1a1a"
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "arc",
+        "innerRadius": 50,
+        "outerRadius": 80,
+        "cornerRadius": 4,
+        "theta2": 3.14159,
+        "tooltip": true
+      },
+      "encoding": {
+        "column": {
+          "field": "category",
+          "type": "nominal",
+          "title": null
+        },
+        "theta": {
+          "field": "current",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              60
+            ],
+            "range": [
+              3.14159,
+              0
+            ]
+          }
+        },
+        "color": {
+          "field": "status",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "In progress",
+              "On target!",
+              "Combined"
+            ],
+            "range": [
+              "#d99970",
+              "#3f4a2a",
+              "#6b8b9e"
+            ]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "category",
+            "type": "nominal"
+          },
+          {
+            "field": "current",
+            "type": "quantitative",
+            "title": "Current %",
+            "format": ".0f"
+          },
+          {
+            "field": "target",
+            "type": "quantitative",
+            "title": "Target %",
+            "format": ".0f"
+          },
+          {
+            "field": "status",
+            "type": "nominal"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "font": "Fraunces",
+        "fontSize": 28,
+        "fontWeight": 700,
+        "color": "#1a1a1a"
+      },
+      "encoding": {
+        "column": {
+          "field": "category",
+          "type": "nominal",
+          "title": null
+        },
+        "text": {
+          "field": "current",
+          "type": "quantitative",
+          "format": ".0f"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": 20,
+        "font": "Public Sans",
+        "fontSize": 11,
+        "color": "#8a8278"
+      },
+      "encoding": {
+        "column": {
+          "field": "category",
+          "type": "nominal",
+          "title": null
+        },
+        "text": {
+          "field": "status",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null,
+      "fill": null
+    },
+    "axis": {
+      "labelFont": "Public Sans",
+      "titleFont": "Public Sans",
+      "labelColor": "#7a7568",
+      "titleColor": "#7a7568",
+      "gridColor": "#d4ccc0",
+      "domainColor": "#d4ccc0",
+      "tickColor": "#d4ccc0"
+    },
+    "concat": {
+      "spacing": 20
+    },
+    "legend": {
+      "labelFont": "Public Sans",
+      "titleFont": "Public Sans",
+      "labelColor": "#5a5448",
+      "titleColor": "#5a5448"
+    }
+  }
+}

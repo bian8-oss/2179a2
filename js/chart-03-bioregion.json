@@ -1,0 +1,207 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Hex grid of Australia's 89 IBRA bioregions, ranked by terrestrial share protected. Data: CAPAD 2024, DCCEEW.",
+  "background": "transparent",
+  "padding": {"top": 20, "right": 20, "bottom": 20, "left": 20},
+  "width": "container",
+  "height": 420,
+
+  "title": {
+    "text": "Is every habitat protected equally?",
+    "subtitle": [
+      "Each hex is one of Australia's 89 IBRA bioregions, ranked by share protected.",
+      "Dark outlines mark the 48 regions still below the 17% international target."
+    ],
+    "anchor": "start",
+    "frame": "group",
+    "font": "Fraunces",
+    "fontSize": 28,
+    "fontWeight": 700,
+    "color": "#1a1a1a",
+    "subtitleFont": "Public Sans",
+    "subtitleFontSize": 15,
+    "subtitleColor": "#4a4641",
+    "subtitlePadding": 8,
+    "offset": 14
+  },
+
+  "datasets": {},
+
+  "layer": [
+    {
+      "data": {"url": "data/ibra-bioregions.csv"},
+      "mark": {
+        "type": "line",
+        "interpolate": "linear-closed",
+        "filled": true,
+        "stroke": "#8a8278",
+        "strokeWidth": 1.2,
+        "fillOpacity": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "vx",
+          "type": "quantitative",
+          "scale": {"domain": [0, 635]},
+          "axis": null
+        },
+        "y": {
+          "field": "vy",
+          "type": "quantitative",
+          "scale": {"domain": [0, 350], "reverse": true},
+          "axis": null
+        },
+        "order": {"field": "vertex_order", "type": "ordinal"},
+        "detail": {"field": "rank", "type": "nominal"},
+        "color": {
+          "field": "protected_pct",
+          "type": "quantitative",
+          "scale": {
+            "type": "linear",
+            "domain": [0, 17, 80],
+            "range": ["#8c3e1e", "#f5efe6", "#3f4a2a"],
+            "clamp": true
+          },
+          "legend": {
+            "title": "% of bioregion protected",
+            "titleFont": "Public Sans",
+            "titleFontSize": 13,
+            "titleFontWeight": 600,
+            "titleColor": "#1a1a1a",
+            "labelFont": "Public Sans",
+            "labelFontSize": 12,
+            "labelColor": "#4a4641",
+            "orient": "bottom",
+            "direction": "horizontal",
+            "gradientLength": 220,
+            "gradientThickness": 12,
+            "values": [0, 17, 30, 60, 80],
+            "offset": 18
+          }
+        },
+        "tooltip": [
+          {"field": "bioregion_name", "type": "nominal",      "title": "Bioregion"},
+          {"field": "bioregion_code", "type": "nominal",      "title": "Code"},
+          {"field": "area_km2",       "type": "quantitative", "title": "Area (km²)", "format": ",.0f"},
+          {"field": "protected_pct",  "type": "quantitative", "title": "% protected", "format": ".1f"},
+          {"field": "gap_to_target_pp","type": "quantitative","title": "vs 17% target (pp)", "format": "+.1f"}
+        ]
+      }
+    },
+
+    {
+      "data": {"url": "data/ibra-bioregions.csv"},
+      "transform": [{"filter": "datum.protected_pct < 17"}],
+      "mark": {
+        "type": "line",
+        "interpolate": "linear-closed",
+        "filled": false,
+        "stroke": "#1a1a1a",
+        "strokeWidth": 1.6,
+        "strokeOpacity": 0.85
+      },
+      "encoding": {
+        "x": {"field": "vx", "type": "quantitative", "scale": {"domain": [0, 635]}, "axis": null},
+        "y": {"field": "vy", "type": "quantitative", "scale": {"domain": [0, 350], "reverse": true}, "axis": null},
+        "order": {"field": "vertex_order", "type": "ordinal"},
+        "detail": {"field": "rank", "type": "nominal"}
+      }
+    },
+
+    {
+      "data": {"url": "data/ibra-bioregions-labels.csv"},
+      "transform": [{"filter": "datum.bioregion_code == 'STU'"}],
+      "mark": {
+        "type": "rect",
+        "fill": "#f5efe6",
+        "fillOpacity": 0.95,
+        "stroke": "#1a1a1a",
+        "strokeWidth": 0.8,
+        "cornerRadius": 4,
+        "width": 130,
+        "height": 22,
+        "yOffset": 23,
+        "xOffset": -65,
+        "align": "left",
+        "baseline": "top"
+      },
+      "encoding": {
+        "x": {"field": "cx", "type": "quantitative", "scale": {"domain": [0, 635]}, "axis": null},
+        "y": {"field": "cy", "type": "quantitative", "scale": {"domain": [0, 350], "reverse": true}, "axis": null}
+      }
+    },
+    {
+      "data": {"url": "data/ibra-bioregions-labels.csv"},
+      "transform": [
+        {"filter": "datum.bioregion_code == 'STU'"},
+        {"calculate": "datum.bioregion_name + ' (' + format(datum.protected_pct, '.0f') + '%)'", "as": "label_text"}
+      ],
+      "mark": {
+        "type": "text",
+        "font": "Fraunces",
+        "fontStyle": "italic",
+        "fontWeight": 700,
+        "fontSize": 13,
+        "color": "#1a1a1a",
+        "align": "center",
+        "baseline": "top",
+        "dy": 34
+      },
+      "encoding": {
+        "x": {"field": "cx", "type": "quantitative", "scale": {"domain": [0, 635]}, "axis": null},
+        "y": {"field": "cy", "type": "quantitative", "scale": {"domain": [0, 350], "reverse": true}, "axis": null},
+        "text": {"field": "label_text"}
+      }
+    },
+
+    {
+      "data": {"url": "data/ibra-bioregions-labels.csv"},
+      "transform": [{"filter": "indexof(['AUA','TWE'], datum.bioregion_code) >= 0"}],
+      "mark": {
+        "type": "rect",
+        "fill": "#f5efe6",
+        "fillOpacity": 0.95,
+        "stroke": "#1a1a1a",
+        "strokeWidth": 0.8,
+        "cornerRadius": 4,
+        "width": 150,
+        "height": 22,
+        "yOffset": -23,
+        "xOffset": -75,
+        "align": "left",
+        "baseline": "bottom"
+      },
+      "encoding": {
+        "x": {"field": "cx", "type": "quantitative", "scale": {"domain": [0, 635]}, "axis": null},
+        "y": {"field": "cy", "type": "quantitative", "scale": {"domain": [0, 350], "reverse": true}, "axis": null}
+      }
+    },
+    {
+      "data": {"url": "data/ibra-bioregions-labels.csv"},
+      "transform": [
+        {"filter": "indexof(['AUA','TWE'], datum.bioregion_code) >= 0"},
+        {"calculate": "datum.bioregion_name + ' (' + format(datum.protected_pct, '.0f') + '%)'", "as": "label_text"}
+      ],
+      "mark": {
+        "type": "text",
+        "font": "Fraunces",
+        "fontStyle": "italic",
+        "fontWeight": 700,
+        "fontSize": 13,
+        "color": "#1a1a1a",
+        "align": "center",
+        "baseline": "bottom",
+        "dy": -34
+      },
+      "encoding": {
+        "x": {"field": "cx", "type": "quantitative", "scale": {"domain": [0, 635]}, "axis": null},
+        "y": {"field": "cy", "type": "quantitative", "scale": {"domain": [0, 350], "reverse": true}, "axis": null},
+        "text": {"field": "label_text"}
+      }
+    }
+  ],
+
+  "config": {
+    "view": {"stroke": null}
+  }
+}

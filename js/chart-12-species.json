@@ -1,0 +1,242 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Species vs protection bivariate analysis. Data: CAPAD 2024 + ALA.",
+  "background": "transparent",
+  "padding": {
+    "top": 20,
+    "right": 20,
+    "bottom": 20,
+    "left": 20
+  },
+  "width": "container",
+  "height": 320,
+  "title": {
+    "text": "Where species live, protection doesn't",
+    "subtitle": [
+      "Bioregions rich in threatened species tend to have the least protected land.",
+      "Data: CAPAD 2024 + Atlas of Living Australia."
+    ],
+    "anchor": "start",
+    "frame": "group",
+    "font": "Fraunces",
+    "fontSize": 24,
+    "fontWeight": 700,
+    "color": "#2a2820",
+    "subtitleFont": "Public Sans",
+    "subtitleFontSize": 13,
+    "subtitleColor": "#7a7568",
+    "subtitlePadding": 6,
+    "offset": 10
+  },
+  "data": {
+    "url": "data/species-vs-protection.csv"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "opacity": 0.85,
+        "size": 180,
+        "stroke": "#f5efe6",
+        "strokeWidth": 1,
+        "tooltip": true
+      },
+      "encoding": {
+        "x": {
+          "field": "protected_pct",
+          "type": "quantitative",
+          "axis": {
+            "title": "% Area Protected",
+            "titleFont": "Public Sans",
+            "titleColor": "#8a8278",
+            "grid": true,
+            "gridColor": "#ebe0cf",
+            "domain": false,
+            "ticks": false,
+            "labelFont": "Public Sans"
+          }
+        },
+        "y": {
+          "field": "species",
+          "type": "quantitative",
+          "axis": {
+            "title": "Threatened species count",
+            "titleFont": "Public Sans",
+            "titleColor": "#8a8278",
+            "grid": true,
+            "gridColor": "#ebe0cf",
+            "domain": false,
+            "ticks": false,
+            "labelFont": "Public Sans"
+          }
+        },
+        "color": {
+          "field": "priority",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "High",
+              "Medium",
+              "Low"
+            ],
+            "range": [
+              "#8c3e1e",
+              "#d99970",
+              "#6e7d4c"
+            ]
+          },
+          "legend": {
+            "title": "Conservation priority",
+            "titleFont": "Public Sans",
+            "labelFont": "Public Sans"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "bioregion",
+            "type": "nominal",
+            "title": "Bioregion"
+          },
+          {
+            "field": "species",
+            "type": "quantitative",
+            "title": "Species"
+          },
+          {
+            "field": "protected_pct",
+            "type": "quantitative",
+            "title": "% Protected",
+            "format": ".1f"
+          },
+          {
+            "field": "priority",
+            "type": "nominal",
+            "title": "Priority"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {"filter": "indexof(['Brigalow Belt South','Great Sandy Desert'], datum.bioregion) < 0"},
+        {"calculate": "datum.bioregion == 'South Eastern Queensland' ? 660 : datum.bioregion == 'South Eastern Highlands' ? 615 : datum.bioregion == 'Swan Coastal Plain' ? 575 : datum.bioregion == 'Victorian Midlands' ? 495 : datum.species", "as": "label_y"}
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "dy": -6,
+        "font": "Public Sans",
+        "fontSize": 10,
+        "color": "#1a1a1a"
+      },
+      "encoding": {
+        "x": {"field": "protected_pct", "type": "quantitative"},
+        "y": {"field": "label_y", "type": "quantitative"},
+        "text": {"field": "bioregion", "type": "nominal"}
+      }
+    },
+    {
+      "transform": [
+        {"filter": "indexof(['South Eastern Queensland','South Eastern Highlands','Swan Coastal Plain','Victorian Midlands'], datum.bioregion) >= 0"},
+        {"calculate": "datum.bioregion == 'South Eastern Queensland' ? 660 : datum.bioregion == 'South Eastern Highlands' ? 615 : datum.bioregion == 'Swan Coastal Plain' ? 575 : 495", "as": "label_y"}
+      ],
+      "mark": {
+        "type": "rule",
+        "color": "#a8a297",
+        "strokeWidth": 1,
+        "strokeDash": [2, 2]
+      },
+      "encoding": {
+        "x": {"field": "protected_pct", "type": "quantitative"},
+        "y": {"field": "species", "type": "quantitative"},
+        "y2": {"field": "label_y"}
+      }
+    },
+    {
+      "transform": [{"filter": "datum.bioregion == 'Brigalow Belt South'"}],
+      "mark": {
+        "type": "rule",
+        "color": "#a8a297",
+        "strokeWidth": 1,
+        "strokeDash": [2, 2]
+      },
+      "encoding": {
+        "x": {"field": "protected_pct", "type": "quantitative"},
+        "y": {"field": "species", "type": "quantitative"},
+        "y2": {"datum": 712}
+      }
+    },
+    {
+      "transform": [{"filter": "datum.bioregion == 'Brigalow Belt South'"}],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "font": "Public Sans",
+        "fontSize": 10,
+        "color": "#1a1a1a"
+      },
+      "encoding": {
+        "x": {"field": "protected_pct", "type": "quantitative"},
+        "y": {"datum": 712, "type": "quantitative"},
+        "text": {"field": "bioregion", "type": "nominal"}
+      }
+    },
+    {
+      "transform": [{"filter": "datum.bioregion == 'Great Sandy Desert'"}],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -10,
+        "dy": -6,
+        "font": "Public Sans",
+        "fontSize": 10,
+        "color": "#1a1a1a"      },
+      "encoding": {
+        "x": {"field": "protected_pct", "type": "quantitative"},
+        "y": {"field": "species", "type": "quantitative"},
+        "text": {"field": "bioregion", "type": "nominal"}
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#c66b3d",
+        "strokeWidth": 1,
+        "strokeDash": [
+          4,
+          3
+        ]
+      },
+      "encoding": {
+        "x": {
+          "datum": 17,
+          "type": "quantitative"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null,
+      "fill": null
+    },
+    "axis": {
+      "labelFont": "Public Sans",
+      "titleFont": "Public Sans",
+      "labelColor": "#7a7568",
+      "titleColor": "#7a7568",
+      "gridColor": "#d4ccc0",
+      "domainColor": "#d4ccc0",
+      "tickColor": "#d4ccc0"
+    },
+    "legend": {
+      "labelFont": "Public Sans",
+      "titleFont": "Public Sans",
+      "labelColor": "#5a5448",
+      "titleColor": "#5a5448"
+    }
+  }
+}
